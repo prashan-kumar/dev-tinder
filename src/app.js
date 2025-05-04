@@ -85,9 +85,20 @@ app.delete("/user",async(req,res)=>{
 app.patch("/user",async(req,res)=>{
     const userId=req.body.userId;
     const data=req.body;
+
+    
     try{
+      const ALLOWED_UPDATES=["userId","photoUrl","about","gender","age","skills"];
+    
+    const isUpdateAllowed=Object.keys(data).every((key)=>{
+      ALLOWED_UPDATES.includes(key);
+    });
+
+    if(!isUpdateAllowed){
+      throw new Error("update is not allowed");
+    }
       //const user=awiat User.fndByIdaAndUpdate({_id : userId},data,{retrunDocument:"after"});
-        await User.findByIdAndUpdate({_id : userId},data); //in this bydefault retutnDocuet is "before"
+        await User.findByIdAndUpdate({_id : userId},data,{returnDocument:"before",runValidators:true}); //in this bydefault retutnDocuet is "before"
         res.send(user);
         //console.log(user);
     }catch(err){
