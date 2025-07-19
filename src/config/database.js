@@ -1,11 +1,11 @@
 const mongoose=require('mongoose');
 
-const connectDb=async ()=>{
+const connectDB=async ()=>{
   await mongoose.connect("mongodb+srv://prashantkumars584:bJ1GXStUU6qKmu7z@namasteproject.xuvvz.mongodb.net/devTinder");
   console.log("connected to database");
 }
 
-module.exports=connectDb;
+module.exports=connectDB;
 
 // connectdb().then(()=>{
 //   console.log("connection is estabished");

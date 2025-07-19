@@ -1,5 +1,5 @@
 const express=require("express")
-const connectDb=require("./config/database.js");
+const connectDB=require("./config/database.js");
 const app=express();
 const User = require("./model/user");
 
@@ -32,7 +32,7 @@ try{
   res.send("user is created");
 }
 catch(err){
-  res.status(400).send("not abel to create user");
+  res.status(400).send("not able to create user");
 }
  
 });
@@ -108,7 +108,7 @@ app.patch("/user",async(req,res)=>{
 
 
 
-connectDb().then(()=>{
+connectDB().then(()=>{
   console.log("connection is established");
   app.listen(7777,()=>{ 
     console.log("server is running on port 7777");

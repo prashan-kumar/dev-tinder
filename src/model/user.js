@@ -1,8 +1,8 @@
 const mongoose=require("mongoose");
 const validator=require("validator");
-const bcrypt=require("bcryptjs");
-const jwt=require("jsonwebtoken");
-const dotenv=require("dotenv");
+// const bcrypt=require("bcryptjs");
+// const jwt=require("jsonwebtoken");
+// const dotenv=require("dotenv");
 
 const userSchema=new mongoose.Schema({
  firstName:{
@@ -31,9 +31,8 @@ const userSchema=new mongoose.Schema({
     if(!validator.isStrongPassword(value)){
       throw new Error("password is not strong enough");
     }
-  }
-  }
-},
+   }
+ },
  age:{
   type:"number"
 },
