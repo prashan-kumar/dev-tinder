@@ -1,7 +1,7 @@
 const validator=require('validator');
 
-const validate=(req)=>{
-  const {firstName, lastName, emainId, password}=req.body;
+const validateSignUpData =(req)=>{
+  const {firstName, lastName, emailId, passWord}=req.body;
   if(!firstName || !lastName){
 
     throw new Error("Name is not valid");
@@ -10,7 +10,11 @@ const validate=(req)=>{
   else if(!validator.isEmail(emailId)){
     throw new Error("Email is not valid");
   }
+  else if(!validator.isStrongPassword(passWord)){
+    throw new Error("Password is not as such strong"); 
+  }
+
 }
 
-module.exports=validate;
+module.exports={validateSignUpData};
 
